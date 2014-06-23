@@ -6,7 +6,8 @@
   
   font-size: 13px;
   
-  width: 300px;
+  width: 90%;
+  margin: auto;
   
   background-color: whiteSmoke;
   border: 1px solid #EEE;
@@ -14,13 +15,13 @@
   -webkit-border-radius: 6px 6px 6px 6px;
   -moz-border-radius: 6px 6px 6px 6px;
   border-radius: 6px 6px 6px 6px;
-  padding-left: 10px;
+  padding: 0px 20px 0px 20px;
 }
 
-.pusher-chat-widget input {
+/*.pusher-chat-widget input {
   width: 280px;
 }
-
+*/
 .pusher-chat-widget label {
   font-weight: bold;
   text-align: left;
@@ -58,11 +59,11 @@
 .pusher-chat-widget-input {
   position: relative;
 }
-
+/*
 .pusher-chat-widget textarea {
   width: 230px;
   height: 40px;
-}
+}*/
 
 .pusher-chat-widget-send-btn {
   width: 50px;

@@ -164,19 +164,19 @@ PusherChatWidget._createHTML = function(appendTo) {
   '<div class="pusher-chat-widget">' +
     '<div class="pusher-chat-widget-header">' +
       '<label for="nickname">Name</label>' +
-      '<input type="text" name="nickname" />' +
-      '<label for="email" title="So we can look up your Gravatar">Email (optional)</label>' +
-      '<input type="email" name="email" />' +
+      '<input type="text" class="form-control" rows="1" name="nickname" />' +
     '</div>' +
-    '<div class="pusher-chat-widget-messages">' +
+    '<div>' +
       '<ul class="activity-stream">' +
         '<li class="waiting">No chat messages available</li>' +
       '</ul>' +
     '</div>' +
-    '<div class="pusher-chat-widget-input">' +
+    '<div class="form-group">' +
       '<label for="message">Message</label>' +
-      '<textarea name="message"></textarea>' +
-      '<button class="pusher-chat-widget-send-btn">Send</button>' +
+      '<textarea name="message" class="form-control" rows="3" ></textarea>' +
+    '</div>' +
+    '<div class="form-group">' +
+      '<button class="btn btn-default btn-lg btn-block">Send</button>' +
     '</div>' +
     '<div class="pusher-chat-widget-footer">' +
       '<a href="http://pusher.com">Pusher</a> powered realtime chat' +
