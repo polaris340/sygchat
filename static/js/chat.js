@@ -20,7 +20,7 @@ $(document).ready(function(){
       $('ul#chat-list').append('<li>'+data.username+': '+data.message+'</li>');
     });
     
-    channel.trigger('my_event',{message:"message"})
+    
     
     
 });
