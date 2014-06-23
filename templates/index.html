@@ -6,14 +6,37 @@
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
 	<script src="{{ url_for('static',filename='js/chat.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootswatch.min.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pusher-chat-widget.css') }}"></script>
 </head>
 <body>
-	<ul id="chat-list">
-		
-	</ul>
-
-		<input type="text" name="message" id="input-message">
-		<button type="button" id="button-send">send</button>
-
+	<div class="container">
+		<section class="realtime-chat">
+			<div class="row">
+	        	<div class="pusher-chat-widget">
+	        		<!-- <div class="pusher-chat-widget-header">
+	        			<label for="nickname">Name</label>
+	        			<input type="text" class="form-control" rows="1" name="nickname" />
+	        		</div> -->
+	        		<div>
+	        			<label>Chat</label>
+	        			<ul class="activity-stream" id="chat-list">
+	        				<!-- <li class="waiting">No chat messages available</li> -->
+	        			</ul>
+	        		</div>
+	        		<div class="form-group">
+	        			<label for="message">Message</label>
+	        			<textarea name="message" class="form-control" rows="3" id="input-message" ></textarea>
+	        		</div>
+	        		<div class="form-group">
+	        			<button class="btn btn-default btn-lg btn-block" id="button-send">Send</button>
+	        		</div>
+	        	</div>
+	        </div>
+	    </section>
+	</div>
 </body>
 </html>

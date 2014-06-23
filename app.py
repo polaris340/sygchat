@@ -37,6 +37,10 @@ def login():
 def logout():
 	return 'logout'
 	
+@app.route('/chat')
+def chat():
+	return render_template('chat.html')
+
 @app.route('/send', methods = ['GET','POST'])
 def send():
 	get_pusher()['test_channel'].trigger('my_event', {'username':session['username'],'message': request.args.get('message','')})

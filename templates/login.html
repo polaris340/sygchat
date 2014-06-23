@@ -3,11 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>log in</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootswatch.min.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/pusher-chat-widget.css') }}"></script>
 </head>
 <body>
-	<form action="login" method="post">
-		<input type="text" name="username" placeholder="input your name" autofocus> 
-		<input type="submit">
-	</form>
+	<div class="container">
+		<section class="realtime-chat">
+			<div class="row">
+				<form action="login" method="post">
+	        	<div class="pusher-chat-widget">
+	        		<div class="pusher-chat-widget-header">
+	        			<label for="nickname">Name</label>
+	        			<input type="text" class="form-control" rows="1" name="username" />
+	        		</div>
+	        		<div class="form-group">
+	        			<input type="submit" value="submit" class="btn btn-default btn-lg btn-block" id="button-send">
+	        		</div>
+	        	</div>
+	        	</form>
+	        </div>
+	    </section>
+	</div>
 </body>
 </html>

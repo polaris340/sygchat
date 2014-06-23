@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
     
     channel.bind('my_event', function(data) {
-      $('ul#chat-list').append('<li>'+data.username+': '+data.message+'</li>');
+      $('ul#chat-list').append('<li class="list-group-item">'+data.username+' : '+data.message+'</li>');
     });
     
     
