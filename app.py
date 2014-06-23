@@ -7,40 +7,45 @@ import pusher
 
 #create app
 app = Flask(__name__)
-
-def create_pusher():
-	p=pusher.Pusher(
-		app_id = '79026',
-		key = '5c4043a6d9b4d7f1da8d',
-		secret='87d7aa6bcf3aed63b7e7'
-	)
-	return p
+app.secret_key = 'sdfjaiAWFa3092%@'
 
 def get_pusher():
 	if not hasattr(g,'pusher'):
-		g.pusher = create_pusher()
+		g.pusher = pusher.Pusher(
+			app_id = '79029',
+			key='1d81fdd2355a7d0819e3',
+			secret='3f54501fe2f593d2605e'
+		)
 	return g.pusher
-	
+
+
+
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	if 'username' in session:
+		return render_template('index.html')
+	else:
+		return render_template('login.html')
 
 @app.route('/login', methods = ['POST'])
 def login():
-	return 'login'
+	session['username'] = request.form['username']
+	return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
 	return 'logout'
+	
+@app.route('/send', methods = ['GET','POST'])
+def send():
+	get_pusher()['test_channel'].trigger('my_event', {'username':session['username'],'message': request.args.get('message','')})
+	return ''
 
-@app.route('/pusher_test')
-def pusher_test():
-	get_pusher()['channel'].trigger('my_event',{'message':'hello world'})
-	return 'hello world'
 
 
 #################### run server#######################################################
 if __name__ == '__main__' :
 	app.debug = True
 	app.run(host='0.0.0.0', port=5001)
+
