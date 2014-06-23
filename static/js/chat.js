@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var pusher = new Pusher('1d81fdd2355a7d0819e3');
     var channel = pusher.subscribe('test_channel');
     
-	$(document).on('keydown','input#input-message',function(e){
+	$(document).on('keydown','#input-message',function(e){
 		if(e.which == 13){
 			send($(this).val());
 			$(this).val('');
@@ -17,12 +17,19 @@ $(document).ready(function(){
     });
     
     channel.bind('my_event', function(data) {
-      $('ul#chat-list').append('<li class="list-group-item">'+data.username+' : '+data.message+'</li>');
+      $('div#chat-list').append(
+      		'<div class="panel panel-primary">'+
+      			'<div class="panel-heading">'+
+      				'<h3 class="panel-title">'+
+      				data.username +
+      				'</h3>' +
+      			'</div>' +
+      			'<div class="panel-body">'+
+      				data.message +
+      			'</div>' +
+      		'</div>'
+      	);
     });
-    
-    
-    
-    
 });
 
 
