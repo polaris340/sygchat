@@ -1,13 +1,18 @@
-
 $(document).ready(function(){
-	var pusher = new Pusher('5c4043a6d9b4d7f1da8d');
-	pusher.connection.bind('connected', function() {
-		alert("Aa");
-	});
-	pusher.connection.bind( 'error', function( err ) { 
-		if( err.data.code === 4004 ) {
-			log('>>> detected limit error');
-		}
-	});
-
+	var pusher = new Pusher('1d81fdd2355a7d0819e3');
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      alert(data.message);
+    });
+    
+    channel.trigger('my_event',{message:"message"})
 });
+
+
+
+function send(message){
+	$.ajax({
+		url:'/send?message='+message,
+		type:'GET'
+	});
+}

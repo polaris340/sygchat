@@ -9,6 +9,17 @@ import pusher
 app = Flask(__name__)
 
 
+def get_pusher():
+	if not hasattr(g,'pusher'):
+		g.pusher = pusher.Pusher(
+			app_id = '79029',
+			key='1d81fdd2355a7d0819e3',
+			secret='3f54501fe2f593d2605e'
+		)
+	return g.pusher
+
+
+
 
 @app.route('/')
 def index():
@@ -21,20 +32,17 @@ def login():
 @app.route('/logout')
 def logout():
 	return 'logout'
+	
+@app.route('/send', methods = ['GET','POST'])
+def send():
+
+	get_pusher()['test_channel'].trigger('my_event', {'message': request.args.get('message','')})
+	return ''
 
 
 
 #################### run server#######################################################
 if __name__ == '__main__' :
 	app.debug = True
-
-	p=pusher.Pusher(
-		app_id = '79026',
-		key = '5c4043a6d9b4d7f1da8d',
-		secret='87d7aa6bcf3aed63b7e7'
-	)
-	get_pusher()['channel'].trigger('my_event',{'message':'hello world'})
-
-
 	app.run(host='0.0.0.0', port=5001)
 
