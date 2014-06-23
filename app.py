@@ -7,7 +7,7 @@ import pusher
 
 #create app
 app = Flask(__name__)
-
+app.secret_key = 'sdfjaiAWFa3092%@'
 
 def get_pusher():
 	if not hasattr(g,'pusher'):
@@ -23,11 +23,15 @@ def get_pusher():
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	if 'username' in session:
+		return render_template('index.html')
+	else:
+		return render_template('login.html')
 
 @app.route('/login', methods = ['POST'])
 def login():
-	return 'login'
+	session['username'] = request.form['username']
+	return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
@@ -35,8 +39,7 @@ def logout():
 	
 @app.route('/send', methods = ['GET','POST'])
 def send():
-
-	get_pusher()['test_channel'].trigger('my_event', {'message': request.args.get('message','')})
+	get_pusher()['test_channel'].trigger('my_event', {'username':session['username'],'message': request.args.get('message','')})
 	return ''
 
 
